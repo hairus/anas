@@ -14,4 +14,9 @@
     <li><a href="/siswa/vote"><i class="fa fa-file"></i> <span>Vote</span></a></li>
     <li><a href="{{ route('logout') }}"><i class="fa fa-key"></i> <span>logout</span></a></li>
     @endif
+    @if(auth()->user()->keterangan == 'guru')
+    <li class="active"><a href="/guru/home"><i class="fa fa-home"></i> <span>Home</span></a></li>
+    <li><a href="/guru/vote"><i class="fa fa-file"></i> <span>Vote Guru</span></a></li>
+    <li><a href="{{ route('logout') }}"><i class="fa fa-key"></i> <span>logout</span></a></li>
+    @endif
 </ul>

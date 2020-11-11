@@ -61,16 +61,36 @@ class AdminController extends Controller
     {
         $request->validate([
             'user_id' => 'required',
-            'categori_id' => 'required'
+            'categori_id' => 'required',
+            'photo' => 'mimes:jpg,jpeg,png|max:25000'
         ]);
 
-        $user = User::where('id', $request->user_id)->first();
-        $user->kandidat()->create([
-            'user_id' => $request->user_id,
-            'categoris_id' => $request->categori_id
-        ]);
 
-        return back();
+        if ($request->photo) {
+            $fileName = time() . '.' . $request->photo->getClientOriginalExtension();
+            $rename = $fileName;
+            $tempatUpload = 'photo';
+            $file = $request->photo;
+            $file->move($tempatUpload, $rename);
+
+            $user = User::where('id', $request->user_id)->first();
+            $user->kandidat()->create([
+                'user_id' => $request->user_id,
+                'categoris_id' => $request->categori_id,
+                'photo' => $rename
+            ]);
+
+            return back();
+        } else {
+
+            $user = User::where('id', $request->user_id)->first();
+            $user->kandidat()->create([
+                'user_id' => $request->user_id,
+                'categoris_id' => $request->categori_id
+            ]);
+
+            return back();
+        }
     }
 
     public function chart()
@@ -83,5 +103,12 @@ class AdminController extends Controller
         // dd($categoris);
 
         return view('admin.chart', compact('osis', 'categoris', 'jumlah'));
+    }
+
+    public function delKandidat($id)
+    {
+        $kandidat = kandidat::where('id', $id)->delete();
+
+        return back()->with('message', 'sukses menghapus');
     }
 }

@@ -1,13 +1,13 @@
 @extends('master')
 
 @section('content')
-<div class="box box-primary">
+<div class="box box-danger">
     <div class="box-header">
-        Pemiilahan Osis
+        Pemiilahan MPK
     </div>
 </div>
 <div class="row">
-    <form action="{{ url('/guru/votes') }}" method="post">
+    <form action="{{ url('/guru/votesMpk') }}" method="post">
         @csrf
         @foreach ($osis as $data)
         <div class="col-md-4">
@@ -34,18 +34,20 @@
                                 <div class="form-group">
                                     <label for="">Pilih</label>
                                     <input type="radio" name="radio[]" id="radio{{ $data->user->id }}"
-                                        value="{{ $data->user->id }}"
-                                        onclick="return confirm('Anda yakin dengan pilihan ini?')" required>
+                                        value="{{ $data->user->id }}" required
+                                        onclick="return confirm('Anda yakin dengan pilihan ini?')">
                                 </div>
 
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
             <!-- /.widget-user -->
         </div>
         @endforeach
+
 </div>
 <button class="btn btn-primary" type="submit">Next</button>
 </form>

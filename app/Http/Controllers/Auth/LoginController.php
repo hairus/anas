@@ -21,6 +21,8 @@ class LoginController extends Controller
 
         if ($filter === 'admin') {
             return '/admin/home';
+        } elseif ($filter === 'guru') {
+            return '/guru/home';
         } elseif ($filter === 'siswa') {
             return '/siswa/home';
         } else {

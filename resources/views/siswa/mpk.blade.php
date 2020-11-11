@@ -18,7 +18,8 @@
                     <h3 class="widget-user-username">{{ $data->user->name }}</h3>
                 </div>
                 <div class="widget-user-image">
-                    <img class="img-circle" src="{{ asset('temp/dist/img/user1-128x128.jpg') }}" alt="User Avatar">
+                    <img width="128" height="128" class="img-circle" src="{{ asset('photo/'.$data->photo) }}"
+                        alt="User Avatar">
                 </div>
                 <div class="box-footer">
                     <div class="row">
