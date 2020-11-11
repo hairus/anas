@@ -93,7 +93,7 @@ desired effect
                                 <img src="{{ asset('temp/dist/img/user2-160x160.jpg') }}" class="user-image"
                                     alt="User Image">
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                <span class="hidden-xs">Alexander Pierce</span>
+                                <span class="hidden-xs">{{ auth()->user()->name }}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
@@ -102,41 +102,28 @@ desired effect
                                         alt="User Image">
 
                                     <p>
-                                        Alexander Pierce - Web Developer
-                                        <small>Member since Nov. 2012</small>
+                                        {{ auth()->user()->name }}
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
-                                <li class="user-body">
-                                    <div class="row">
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Followers</a>
-                                        </div>
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Sales</a>
-                                        </div>
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Friends</a>
-                                        </div>
-                                    </div>
-                                    <!-- /.row -->
-                                </li>
-                                <!-- Menu Footer-->
-                                <li class="user-footer">
-                                    <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                    </div>
-                                    <div class="pull-right">
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                            class="d-none">
-                                            @csrf
-                                            <button class="btn btn-default btn-flat" type="submit">Sign out</button>
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
+
+                                <!-- /.row -->
                         </li>
-                        <!-- Control Sidebar Toggle Button -->
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                            </div>
+                            <div class="pull-right">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                    <button class="btn btn-default btn-flat" type="submit">Sign out</button>
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                    </li>
+                    <!-- Control Sidebar Toggle Button -->
 
                     </ul>
                 </div>
@@ -154,9 +141,9 @@ desired effect
                         <img src="{{ asset('temp/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <p>Alexander Pierce</p>
+                        <p>{{ auth()->user()->name }}</p>
                         <!-- Status -->
-                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        <a href="#"><i class="fa fa-circle text-success"></i> {{ auth()->user()->keterangan }}</a>
                     </div>
                 </div>
 
