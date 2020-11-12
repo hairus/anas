@@ -7,7 +7,7 @@
     </div>
 </div>
 <div class="row">
-    <form action="{{ url('/guru/votes') }}" method="post">
+    <form action="{{ url('/siswa/votes') }}" method="post">
         @csrf
         @foreach ($osis as $data)
         <div class="col-md-4">

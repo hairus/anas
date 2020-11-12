@@ -6,7 +6,6 @@ use App\Models\kandidat;
 use App\Models\vote_mpk;
 use App\Models\vote_osis;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 
 class SiswaController extends Controller
 {

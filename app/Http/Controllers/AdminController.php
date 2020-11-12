@@ -7,6 +7,7 @@ use App\Exports\GuruExport;
 use App\Imports\SiswaImport;
 use App\Models\categoris;
 use App\Models\kandidat;
+use App\Models\vote_mpk;
 use App\Models\vote_osis;
 use App\User;
 use Illuminate\Http\Request;
@@ -95,14 +96,20 @@ class AdminController extends Controller
 
     public function chart()
     {
+        /** data untuk osis */
         $osis = kandidat::where('categoris_id', 1)->get();
         foreach ($osis as $data) {
             $categoris[] = $data->user->name;
             $jumlah[] = vote_osis::where('user_id', $data->user_id)->count();
         }
-        // dd($categoris);
 
-        return view('admin.chart', compact('osis', 'categoris', 'jumlah'));
+        $mpk = kandidat::where('categoris_id', 2)->get();
+        foreach ($mpk as $data) {
+            $categoris1[] = $data->user->name;
+            $jumlah1[] = vote_mpk::where('user_id', $data->user_id)->count();
+        }
+
+        return view('admin.chart', compact('osis', 'categoris', 'jumlah', 'categoris1', 'jumlah1'));
     }
 
     public function delKandidat($id)
