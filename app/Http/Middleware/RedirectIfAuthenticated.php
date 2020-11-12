@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Providers\RouteServiceProvider;
+use App\User;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,10 +19,22 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        // if (Auth::guard($guard)->check()) {
+        //     return redirect(RouteServiceProvider::HOME);
+        // }
         if (Auth::guard($guard)->check()) {
-            return redirect(RouteServiceProvider::HOME);
-        }
 
+            if (Auth::user()->keterangan == 'admin') {
+                return redirect('/admin/home');
+            }
+            if (Auth::user()->type == 'siswa') {
+                return redirect('/siswa/home');
+            }
+            if (Auth::user()->type == 'guru') {
+                return redirect('/guru/home');
+            }
+        }
         return $next($request);
+        // return $next($request);
     }
 }

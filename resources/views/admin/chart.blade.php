@@ -1,8 +1,10 @@
 @extends('master')
 @section('content')
-<div id="osis">
-</div>
-<div id="mpk">
+<div class="content">
+    <div id="osis">
+    </div>
+    <div id="mpk">
+    </div>
 </div>
 @endsection
 @section('script')
