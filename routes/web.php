@@ -8,7 +8,8 @@ Route::get('/', function () {
     return view('auth.login1');
 });
 
-Auth::routes();
+// Auth::routes();
+Auth::routes(['register' => false]);
 Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/home', 'HomeController@index')->name('home');
     Route::get('/admin/allUser', 'AdminController@index');
@@ -32,6 +33,7 @@ Route::group(['middleware' => ['guru']], function () {
     Route::post('/guru/votes', 'GuruController@saveVote');
     Route::post('/guru/votesMpk', 'GuruController@saveVoteMpk');
     Route::get('/guru/finish', 'GuruController@finish');
+    Route::get('/admin/close', 'AdminController@close');
 });
 
 Route::group(['middleware' => ['siswa']], function () {
@@ -42,6 +44,7 @@ Route::group(['middleware' => ['siswa']], function () {
     Route::post('/siswa/votes', 'SiswaController@saveVote');
     Route::post('/siswa/votesMpk', 'SiswaController@saveVoteMpk');
     Route::get('/siswa/finish', 'SiswaController@finish');
+    Route::get('/admin/close', 'AdminController@close');
 });
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
