@@ -20,6 +20,8 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/simpanKandidat', 'AdminController@simpanKandidat');
     Route::get('/admin/chart', 'AdminController@chart');
     Route::get('/admin/delKandidat/{id}', 'AdminController@delKandidat');
+    Route::get('/admin/time', 'AdminController@time');
+    Route::get('/admin/close', 'AdminController@close');
 });
 
 Route::group(['middleware' => ['guru']], function () {

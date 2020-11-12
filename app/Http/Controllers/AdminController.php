@@ -9,6 +9,7 @@ use App\Models\categoris;
 use App\Models\kandidat;
 use App\Models\vote_mpk;
 use App\Models\vote_osis;
+use App\Models\waktu;
 use App\User;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -117,5 +118,22 @@ class AdminController extends Controller
         $kandidat = kandidat::where('id', $id)->delete();
 
         return back()->with('message', 'sukses menghapus');
+    }
+
+    public function time()
+    {
+        // return view('admin.duedate');
+        $waktu_skr = strtotime(date(now()));
+        $get_waktu_akhir = waktu::first();
+        if ($waktu_skr < strtotime($get_waktu_akhir->terahir)) {
+            dump("pemilihan masih berlanjut");
+        } else {
+            return redirect('admin/close');
+        }
+    }
+
+    public function close()
+    {
+        return view('admin.close');
     }
 }

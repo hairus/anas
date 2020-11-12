@@ -22,12 +22,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
     <link rel="stylesheet" href="{{ asset('temp/dist/css/skins/skin-blue.min.css')}}">
-
     {{-- datatable --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap.min.css">
     {{-- select 2 --}}
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet"
+        href="{{ asset('temp/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -280,13 +281,13 @@ desired effect
     <!-- AdminLTE App -->
     <script src="{{ asset('temp/dist/js/adminlte.min.js')}}"></script>
     <!-- AdminLTE chart -->
-
+    <script src="{{ asset('temp/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}">
+    </script>
 
     {{-- data table --}}
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     {{-- select2 --}}
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
